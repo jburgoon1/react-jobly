@@ -21,7 +21,6 @@ function App() {
   const [token, setToken] = useState()
   const [application, setApplication] = useState(null)
 
-  console.log(2, application)
   const storedToken = () =>{
     const loggedIn = localStorage.getItem('token')
     if(loggedIn){
