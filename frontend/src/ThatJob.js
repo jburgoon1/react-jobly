@@ -3,7 +3,7 @@ import {useParams} from 'react-router-dom'
 import api from './api'
 import {Card, Button} from 'react-bootstrap'
 
-const ThatJob = ({currentUser, apply, applications, getuser}) =>{
+const ThatJob = ({currentUser, applications, getuser}) =>{
     const {id} = useParams()
     const [job, setJob] = useState([])
 console.log(1, applications)
@@ -39,7 +39,7 @@ return (
     <Card.Body>{job.compname}</Card.Body>
     <Card.Body>Salary: ${job.salary}</Card.Body>
     <Card.Body>Equity: {job.equity}</Card.Body>
-    <Button variant="primary" onClick={apply} disabled>Apply</Button>
+    <Button variant="primary" onClick={applyToJob} disabled>Apply</Button>
 </Card>
     }
  

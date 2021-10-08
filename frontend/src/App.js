@@ -27,6 +27,7 @@ function App() {
     if(loggedIn){
       newToken(loggedIn) 
     }
+    
   }
   const newToken = (token) =>{
     setToken(token)
