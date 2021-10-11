@@ -4,14 +4,15 @@ import api from './api'
 import {Card, Button} from 'react-bootstrap'
 
 const ThatJob = ({currentUser, applications, getuser}) =>{
-    const {id} = useParams()
+    let {id} = useParams()
+    id = parseInt(id)
     const [job, setJob] = useState([])
-console.log(1, applications)
 
-const applyToJob = async (e, jobId) =>{
+
+const applyToJob = async (e) =>{
     e.preventDefault()
     console.log(currentUser)
-    const res = await api.apply(currentUser, jobId)
+    const res = await api.apply(currentUser, id)
     getuser(currentUser)
 }
 
@@ -25,13 +26,13 @@ const applyToJob = async (e, jobId) =>{
 
 return (
     <div>
-    {applications.includes(id)?
+    {applications&& applications.includes(id)?
 <Card className="text-center">
     <Card.Title>{job.title}</Card.Title>
     <Card.Body>{job.compname}</Card.Body>
     <Card.Body>Salary: ${job.salary}</Card.Body>
     <Card.Body>Equity: {job.equity}</Card.Body>
-    <Button variant="primary" onClick={applyToJob}>Apply</Button>
+    <Button variant="primary" onClick={applyToJob} disabled>Applied</Button>
 </Card>
 :
 <Card className="text-center">
@@ -39,7 +40,7 @@ return (
     <Card.Body>{job.compname}</Card.Body>
     <Card.Body>Salary: ${job.salary}</Card.Body>
     <Card.Body>Equity: {job.equity}</Card.Body>
-    <Button variant="primary" onClick={applyToJob} disabled>Apply</Button>
+    <Button variant="primary" onClick={applyToJob}>Apply</Button>
 </Card>
     }
  
